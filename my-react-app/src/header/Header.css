@@ -1,0 +1,80 @@
+/* src/components/Header.css */
+.header {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-title {
+  font-size: 1.5em;
+  margin: 0 20px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.header-search {
+  margin-right: 20px;
+}
+
+.header-search input {
+  padding: 5px;
+  font-size: 1em;
+}
+
+.header-icons {
+  display: flex;
+  gap: 15px;
+  margin-right: 20px;
+}
+
+.icon-link {
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .header-search {
+    margin: 10px 0;
+  }
+  
+  .header-icons {
+    margin: 10px 0;
+  }
+}
