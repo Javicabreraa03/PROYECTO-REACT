@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  /* Asegura que no haya desbordamiento horizontal */
 }
 
 #header {
@@ -43,6 +44,7 @@ body {
   width: 100%;
   gap: 3rem;
   overflow: hidden;
+  /* Oculta el contenido desbordante */
 }
 
 .header__nav-section_main {

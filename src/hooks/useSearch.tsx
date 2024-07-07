@@ -1,19 +1,14 @@
-import { useState } from "react";
-import { ListOfProducts } from "../types";
+import { useContext} from "react";
+import { ProductsContext } from "../context/ProductsContext";
 
 
-export default function useSearch({ products }: {products: ListOfProducts}) {
-  const [searchTerm, setSearchTerm] = useState("");
 
-  const filterProducts = (products: ListOfProducts) => {
-    return products?.filter((product) => {
-      return product.title
-        .toLowerCase()
-        .includes(searchTerm.trim().toLowerCase());
-    });
-  };
+export default function useSearch() {
+  const context = useContext(ProductsContext)
 
-  const filteredProducts = filterProducts(products);
+  if(context === undefined) {
+    throw new Error("useSearch must be used within a ProductsProvider")
+  }
 
-  return {filteredProducts, setSearchTerm } as const;
+  return context;
 }

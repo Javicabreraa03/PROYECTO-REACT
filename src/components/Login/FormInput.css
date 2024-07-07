@@ -9,7 +9,7 @@
 .form-input__label {
     font-family: "GintoRounded_Medium";
     padding: 0 0.2rem;
-    color:  var(--text-primary-color);
+    color:  var(--text-secondary-color);
 
 }
 

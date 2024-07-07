@@ -29,7 +29,7 @@
 
 
 .footer__link-icon, .footer__link, .footer__links-title {
-    color: var(--text-terciary-color);
+    color: var(--text-primary-color);
 }
 
 .footer__link-icon:hover, .footer__link:hover {

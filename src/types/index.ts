@@ -11,12 +11,12 @@ export type ProductProps = {
     }
 }
 
+type ChildrenProp = {children: React.ReactNode}
+
 export type ListOfProducts = ProductProps[];
 
 //ThemeContext Props
-export type ThemeContextProviderProps = {
-  children: React.ReactNode;
-}
+export type ThemeContextProviderProps = ChildrenProp;
 
 export type ThemeProps = "dark" | "light"
 
@@ -25,14 +25,13 @@ export type ThemeContextProps = {
   toggleTheme: () => void;
 }
 
-
 // UserContextProps
 export interface UserDataProps {
   username: string,
   email: string,
 }
 
-export type UserContextProps = {
+export type AuthContextProps = {
   userData: UserDataProps,
   isLogged: boolean,
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
@@ -40,6 +39,31 @@ export type UserContextProps = {
   handleLogout: () => void,
 }
 
-export type UserContextProviderProps = {
-  children: React.ReactNode;
+export type AuthContextProviderProps = ChildrenProp;
+
+//CartContextProps
+export type CartContextProviderProps = ChildrenProp;
+
+export type CartContextProps = {
+  cart: CartItemProps[];
+  addItemToCart: (products: ProductProps) => void;
+  removeItemFromCart: (product: ProductProps) => void;
+  emptyCart: () => void;
+};
+
+export type CartItemProps = {
+  product: ProductProps;
+  quantity: number;
+};
+
+//ProductsProviderProps
+export type ProductsContextProps = {
+  filteredProducts: ListOfProducts;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export type ProductsContextProviderProps = {
+  children: React.ReactNode
+}
+
+

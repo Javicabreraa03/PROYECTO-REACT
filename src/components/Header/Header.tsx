@@ -1,45 +1,38 @@
-import BurguerButton from "./BurguerButton";
-import MainNavbar from "./MainNavbar";
-import UserNavbar from "./UserNavbar";
+import {BurgerButton, MainNavbar, UserNavbar} from "./index";
 import useToggleNavbar from "../../hooks/useToggleNabar";
 import "./Header.css";
-import { ThemeProps } from "../../types";
+import { useSearch, useThemeContext } from "../../hooks";
+import { Link } from "react-router-dom";
 
 // TODO: intentar evitar el prop-drilling de getSearchTerm
 
-interface HeaderProps {
-  getSearchTerm: (value: string) => void;
-  theme: ThemeProps;
-  handleActivePage: (value: "cart" | "shop") => void;
-}
 
-export default function Header({
-  getSearchTerm,
-  theme,
-  handleActivePage,
-}: HeaderProps) {
+export default function Header() {
+  const { theme } = useThemeContext();
+  const { setSearchTerm } = useSearch()
   const { clicked, toggleClicked } = useToggleNavbar();
+
 
   return (
     <header id="header" className={`header ${theme}`}>
       <div
         className="header__logo-container"
       >
-        <a href="#" onClick={() => handleActivePage("shop")}>
+        <Link to="/">
           <h1 className="header__title">MI TIENDA</h1>
-        </a>
+        </Link>
       </div>
       <div className="header__nav-container">
         <div className={`header__nav-section_main  ${clicked ? "active" : ""}`}>
           <MainNavbar
             toggleClicked={toggleClicked}
-            getSearchTerm={getSearchTerm}
+            getSearchTerm={setSearchTerm}
           />
         </div>
-        <UserNavbar handleToggleActivePage={handleActivePage} />
+        <UserNavbar/>
       </div>
       <div className="burger__button">
-        <BurguerButton clicked={clicked} toggleClicked={toggleClicked} />
+        <BurgerButton clicked={clicked} toggleClicked={toggleClicked} />
       </div>
     </header>
   );
